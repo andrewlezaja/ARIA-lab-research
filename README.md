@@ -2,7 +2,7 @@
 
 > Research project targeting publication at **NeurIPS 2026** — NJIT ARIA Lab
 
-This repository contains the **data ingestion and preprocessing pipeline** for a Deep Reinforcement Learning framework targeting the Boosted Influence Maximization (BIM) problem: given a social network and a budget of edges to add, select edges that maximally increase the spread of influence from a fixed seed set.
+**Data ingestion and preprocessing pipeline** for a Deep Reinforcement Learning framework targeting the Boosted Influence Maximization (BIM) problem: given a social network and a budget of edges to add, select edges that maximally increase the spread of influence from a fixed seed set.
 
 ---
 
