@@ -41,6 +41,21 @@ Four large-scale SNAP social network datasets:
 | Google Web | ~876K | Google web crawl graph |
 | Web-NotreDame | ~326K | Notre Dame web graph |
 
+## Usage
+
+```bash
+# Install dependencies
+pip install -r requirements.txt
+
+# Preprocess a dataset (--fast uses degree heuristic instead of MIA greedy)
+python preprocess_graph.py --dataset datasets/email_enron \
+    --c-size 2000 --Ks 1 10 50 100 200 --trials 3 --fast
+
+# Validate pipeline outputs
+python scripts/validate_graph_loader.py \
+    --dataset datasets/email_enron/processed --no-drl --verbose
+```
+
 ---
 
 ## Pipeline Overview
@@ -71,16 +86,22 @@ Raw SNAP edgelist
 ---
 
 ## Tech Stack
-
 - **Python** — pipeline orchestration
-- **NetworkX** — graph loading, manipulation, and influence-based seed selection
+- **NetworkX** — graph loading, manipulation, and influence-based seed selection  
 - **NumPy / Pandas** — data validation and cross-checking against benchmarks
 
----
+> Runs on CPU only — no GPU required for the preprocessing pipeline.
 
-## Status
+## Repository Contents
 
-Active research — targeting NeurIPS 2026 submission.
+| File | Description |
+|------|-------------|
+| `preprocess_graph.py` | End-to-end preprocessing pipeline |
+| `scripts/graph_loader.py` | Graph + seed + candidate loader |
+| `scripts/validate_graph_loader.py` | Validation suite for pipeline outputs |
+
+> **Note:** The DRL training environment, reward functions, and model architecture
+> are withheld pending NeurIPS 2026 submission. Available upon request after publication.
 
 ---
 
